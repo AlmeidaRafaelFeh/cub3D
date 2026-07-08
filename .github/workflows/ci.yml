@@ -17,5 +17,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libx11-dev libxext-dev libbsd-dev zlib1g-dev
 
+      - name: Install norminette
+        run: |
+          python3 -m pip install --user norminette
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
       - name: Build project
         run: make
+
+      - name: Run tests
+        run: make test
+
+      - name: Run norminette
+        run: make norm

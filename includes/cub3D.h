@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:58:37 by rafreire          #+#    #+#             */
-/*   Updated: 2026/07/08 09:12:37 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/07/08 10:32:07 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_pixel_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-} 	t_pixel_data;
+}	t_pixel_data;
 
 typedef struct s_game
 {
@@ -67,6 +67,5 @@ typedef struct s_game
 int		parsing_main(void);
 int		render_main(void);
 void	my_pixel_put(t_pixel_data *data, int x, int y, int color);
-
 
 #endif
