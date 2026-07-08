@@ -94,6 +94,8 @@ O workflow em `.github/workflows/ci.yml` já faz:
 - `make test`;
 - `make norm`.
 
+Ele também baixa a MiniLibX antes de compilar, porque esse diretório precisa existir no ambiente do GitHub Actions para o `# include <mlx.h>` funcionar.
+
 Então o ideal é manter o mesmo comportamento local e no CI.
 
 ## Dica prática
