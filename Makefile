@@ -36,21 +36,21 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(MINILIBX):
-	@make -sC $(MINILIBX_DIR) DEBUG="$(DEBUG)" >/dev/null
+	@make -sC $(MINILIBX_DIR) DEBUG="$(DEBUG)" >/dev/null 2>&1
 
 $(LIBFT):
-	@make -sC $(LIBFT_DIR) DEBUG="$(DEBUG)"
+	@make -sC $(LIBFT_DIR) DEBUG="$(DEBUG)" >/dev/null 2>&1
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@make -sC $(LIBFT_DIR) clean
-	@make -sC $(MINILIBX_DIR) clean >/dev/null
+	@make -sC $(LIBFT_DIR) clean >/dev/null 2>&1
+	@make -sC $(MINILIBX_DIR) clean >/dev/null 2>&1
 	@echo "✅ Clean: $(NAME)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -sC $(LIBFT_DIR) fclean
-	-@make -sC $(MINILIBX_DIR) fclean > /dev/null 2>&1 || true
+	@make -sC $(LIBFT_DIR) fclean >/dev/null 2>&1
+	-@make -sC $(MINILIBX_DIR) fclean >/dev/null 2>&1 || true
 
 re: fclean all
 
