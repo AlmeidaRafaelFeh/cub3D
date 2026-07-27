@@ -10,6 +10,9 @@ CUB = \
 		cub3D.c \
 		parsing/main.c \
 		render/main.c \
+		render/render_background.c \
+		render/render_frame.c \
+		render/render_minimap.c \
 		utils_minilibx/utils_mlx.c
 
 SRCS = \

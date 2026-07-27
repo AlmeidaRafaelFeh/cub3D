@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:58:37 by rafreire          #+#    #+#             */
-/*   Updated: 2026/07/08 10:32:07 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/07/27 13:44:54 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@ typedef struct s_player
 	int	moves;
 }	t_player;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+typedef t_img	t_pixel_data;
+
+typedef struct s_game // game
+{
+	void		*mlx;
+	void		*win;
+
+	t_img		screen;
+
+	char		**map;
+	int			map_w;
+	int			map_h;
+
+	t_player	player;
+
+}	t_game;
+
 typedef struct s_flood
 {
 	char	**map;
@@ -37,7 +63,7 @@ typedef struct s_flood
 	int		height;
 }	t_flood;
 
-typedef struct s_pixel_data
+/*typedef struct s_pixel_data
 {
 	char	*addr;
 	int		bits_per_pixel;
@@ -62,10 +88,13 @@ typedef struct s_game
 	void		*img_player;
 	void		*img_exit;
 	t_player	player;
-}	t_game;
+}	t_game; */
 
 int		parsing_main(void);
 int		render_main(void);
-void	my_pixel_put(t_pixel_data *data, int x, int y, int color);
+int		render_frame(t_game *game);
+void	render_background(t_game *game);
+void	render_minimap(t_game *game);
+void	my_pixel_put(t_img *img, int x, int y, int color);
 
 #endif
