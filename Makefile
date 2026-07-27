@@ -61,7 +61,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -f $(TEST_BIN)
 	@make -sC $(LIBFT_DIR) clean >/dev/null 2>&1
-	@make -sC $(MINILIBX_DIR) clean >/dev/null 2>&1
+	-@make -sC $(MINILIBX_DIR) clean >/dev/null 2>&1 || true
 	@echo "✅ Clean: $(NAME)"
 
 fclean: clean

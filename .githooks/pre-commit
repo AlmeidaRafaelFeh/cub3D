@@ -5,4 +5,15 @@ set -eu
 ROOT_DIR=$(git rev-parse --show-toplevel)
 cd "$ROOT_DIR"
 
+if [ ! -f "$ROOT_DIR/minilibx-linux/mlx.h" ] && [ -f "$ROOT_DIR/.gitmodules" ]; then
+	printf 'Preparing minilibx-linux submodule...\n'
+	git submodule update --init --recursive minilibx-linux
+fi
+
+if ! command -v norminette >/dev/null 2>&1; then
+	printf 'Installing norminette...\n'
+	python3 -m pip install --user norminette >/dev/null
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
 make -s test norm
