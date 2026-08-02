@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:58:37 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/02 15:12:29 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/02 16:13:28 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	moves;
+	int		x;
+	int		y;
+	int		moves;
+	char	direction;
 }	t_player;
 
 typedef struct s_img
@@ -59,6 +60,8 @@ typedef struct s_flood
 	char	**map;
 	int		width;
 	int		height;
+	int		x;
+	int		y;
 }	t_flood;
 
 typedef struct s_scene
@@ -81,24 +84,29 @@ void	render_minimap(t_game *game);
 // parsing functions
 
 void	free_map(t_game *game);
+void	normalize_line(char *line);
+void	free_scene_data(t_scene *scene);
+void	destroy_all(t_scene *scene, t_game *game);
 int		is_valid_char(char c);
 int		parsing_main(char *file_path);
 int		parse_map_from_rows(char **rows, int row_count, t_game *game);
 int		get_max_width(char **rows, int row_count);
 int		get_row_len(char *row);
-int		set_player_position(t_game *game, int x, int y);
 int		count_players(char **rows, int row_count);
 int		is_blank_line(char *line);
-void	normalize_line(char *line);
 int		is_header_line(char *line);
 int		is_map_line(char *line);
-char	*skip_spaces(char *line);
 int		header_complete(t_scene *scene);
 int		store_header_line(t_scene *scene, char *line);
 int		append_row(t_scene *scene, char *line);
 int		collect_scene_data(int fd, t_scene *scene);
-void	free_scene_data(t_scene *scene);
+int		parsing_error(char *message);
+int		validate_parsed_map(t_game *game);
+int		validate_map_closed(t_game *game);
+int		validate_map_flood(t_game *game);
+int		set_player_position(t_game *game, int x, int y, char direction);
 char	**alloc_map(int row_count, int max_width);
+char	*skip_spaces(char *line);
 
 // utils mlx
 void	my_pixel_put(t_img *img, int x, int y, int color);

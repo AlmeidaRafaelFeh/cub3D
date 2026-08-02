@@ -1,5 +1,5 @@
-Então a ordem recomendada é:
-
-completar a forma do mapa;
-validar se ele está cercado por 1;
-detectar vazamentos com flood fill ou checagem de vizinhos.
+validar e carregar de verdade os caminhos das texturas do header;
+converter F e C em cores RGB utilizáveis, em vez de guardar só string;
+ligar essa configuração lida ao render;
+usar a direction do jogador no movimento/visão inicial, se ainda não estiver sendo aplicada fora do parsing;
+revisar se o fluxo de erro está consistente em todos os casos de mapa/header inválidos.

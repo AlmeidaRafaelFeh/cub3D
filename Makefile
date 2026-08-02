@@ -14,15 +14,18 @@ CUB = \
 		render/render_frame.c \
 		render/render_minimap.c \
 		utils_minilibx/utils_mlx.c \
-		parsing/parsing_utils.c \
-		parsing/parsing_map.c \
-		parsing/parsing_map_utils.c \
-		parsing/parsing_player.c \
-		parsing/parsing_scene_utils.c \
-		parsing/parsing_scene_header.c \
-		parsing/parsing_scene_rows.c \
-		parsing/parsing_scene_reader.c \
-		parsing/parsing_scene_cleanup.c \
+		parsing/utils.c \
+		parsing/map.c \
+		parsing/map_utils.c \
+		parsing/player.c \
+		parsing/scene_utils.c \
+		parsing/scene_header.c \
+		parsing/scene_rows.c \
+		parsing/scene_reader.c \
+		parsing/scene_cleanup.c \
+		parsing/msg_errors.c \
+		parsing/map_flood.c \
+		parsing/map_validation.c \
 
 SRCS = \
 		$(addprefix $(SRC_DIR)/, $(CUB))
@@ -30,15 +33,18 @@ SRCS = \
 TEST_PARSING_SRCS = \
     $(TEST_DIR)/test_parsing.c \
     $(SRC_DIR)/parsing/main.c \
-    $(SRC_DIR)/parsing/parsing_utils.c \
-    $(SRC_DIR)/parsing/parsing_map.c \
-    $(SRC_DIR)/parsing/parsing_map_utils.c \
-	$(SRC_DIR)/parsing/parsing_player.c \
-	$(SRC_DIR)/parsing/parsing_scene_utils.c \
-	$(SRC_DIR)/parsing/parsing_scene_header.c \
-	$(SRC_DIR)/parsing/parsing_scene_rows.c \
-	$(SRC_DIR)/parsing/parsing_scene_reader.c \
-	$(SRC_DIR)/parsing/parsing_scene_cleanup.c
+    $(SRC_DIR)/parsing/utils.c \
+    $(SRC_DIR)/parsing/map.c \
+    $(SRC_DIR)/parsing/map_utils.c \
+	$(SRC_DIR)/parsing/player.c \
+	$(SRC_DIR)/parsing/scene_utils.c \
+	$(SRC_DIR)/parsing/scene_header.c \
+	$(SRC_DIR)/parsing/scene_rows.c \
+	$(SRC_DIR)/parsing/scene_reader.c \
+	$(SRC_DIR)/parsing/scene_cleanup.c \
+	$(SRC_DIR)/parsing/msg_errors.c \
+	$(SRC_DIR)/parsing/map_validation.c \
+	$(SRC_DIR)/parsing/map_flood.c
 
 LIBFT = $(LIBFT_DIR)/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a

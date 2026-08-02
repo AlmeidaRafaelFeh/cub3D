@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 14:03:35 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/02 14:49:45 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/02 16:17:27 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,9 @@ int	is_valid_char(char c)
 		|| c == 'E' || c == 'W');
 }
 
-int	free_rows(char **rows, int row_count)
+void	destroy_all(t_scene *scene, t_game *game)
 {
-	int	row;
-
-	row = 0;
-	while (rows && row < row_count)
-	{
-		free(rows[row]);
-		row++;
-	}
-	free(rows);
-	return (0);
+	free_scene_data(scene);
+	free_map(game);
+	return ;
 }

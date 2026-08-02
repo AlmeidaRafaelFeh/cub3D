@@ -6,18 +6,19 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 11:22:04 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/02 13:08:00 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/02 15:45:47 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	set_player_position(t_game *game, int x, int y)
+int	set_player_position(t_game *game, int x, int y, char direction)
 {
 	if (game->player.moves == 1)
 		return (1);
 	game->player.x = x;
 	game->player.y = y;
+	game->player.direction = direction;
 	game->player.moves = 1;
 	return (0);
 }
