@@ -1,0 +1,5 @@
+Então a ordem recomendada é:
+
+completar a forma do mapa;
+validar se ele está cercado por 1;
+detectar vazamentos com flood fill ou checagem de vizinhos.
