@@ -1,31 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   parsing_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 09:19:10 by rafreire          #+#    #+#             */
+/*   Created: 2026/08/02 11:22:04 by rafreire          #+#    #+#             */
 /*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int ac, char **av)
+int	set_player_position(t_game *game, int x, int y, char orientation)
 {
-	t_game	game;
-
-	if (ac != 2)
+	if (game->player.moves == 1)
 		return (1);
-	ft_memset(&game, 0, sizeof(game));
-	if (parsing_main(av[1], &game))
-		return (1);
-	if (render_main(&game))
-	{
-		free_map(&game);
-		return (1);
-	}
-	free_map(&game);
+	game->player.x = x;
+	game->player.y = y;
+	game->player.orientation = orientation;
+	game->player.moves = 1;
 	return (0);
+}
+
+int	count_players(char **rows, int row_count)
+{
+	int	row;
+	int	col;
+	int	count;
+	int	len;
+
+	row = 0;
+	count = 0;
+	while (row < row_count)
+	{
+		col = 0;
+		len = get_row_len(rows[row]);
+		while (col < len)
+		{
+			if (rows[row][col] == 'N' || rows[row][col] == 'S'
+				|| rows[row][col] == 'E' || rows[row][col] == 'W')
+				count++;
+			col++;
+		}
+		row++;
+	}
+	return (count);
 }
