@@ -6,7 +6,7 @@
 /*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 15:02:30 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/07/29 15:53:59 by tmfanfa          ###   ########.fr       */
+/*   Updated: 2026/08/03 20:52:08 by tmfanfa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 // servem só pra gente enxergar a profundidade e orientaçãoo antes de termos
 // as texturas de verdade (que ainda não sei qual tema vai ser hehe)
 // cada define aqui vai virar uma textura usando mlx_xpm_file_to_image pra carregar elas mais pra frente
-# define COLOR_NORTH 0xC0392B
-# define COLOR_SOUTH 0xE74C3C
-# define COLOR_EAST	 0x27AE60
-# define COLOR_WEST	 0x2ECC71
+# define COLOR_NORTH 0x0066FF  /* Azul forte */
+# define COLOR_SOUTH 0xFF0000  /* Vermelho */
+# define COLOR_EAST  0x00CC44  /* Verde */
+# define COLOR_WEST  0xCC00FF  /* Magenta */
 
 // escolhe a cor da parede de acordo com o lado atingido pelo raio
 // ray.side == 1 -> parede "horizontal" (norte ou sul), diferenciada pelo sinal de dir_y.
