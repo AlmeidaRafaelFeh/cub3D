@@ -15,32 +15,50 @@
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.03
 
+// true se (x,y) cai numa parede ou fora dos limites do mapa
+static int	is_wall(t_game *game, double x, double y)
+{
+	int	col;
+	int	row;
+
+	col = (int)x;
+	row = (int)y;
+	if (row < 0 || row >= game->map_h || col < 0 || col >= game->map_w)
+		return (1);
+	if (!game->map[row] || col >= (int)ft_strlen(game->map[row]))
+		return (1);
+	return (game->map[row][col] == '1');
+}
+
+// tenta aplicar o deslocamento eixo a eixo: só move em x se o destino em x
+// não for parede, e só move em y se o destino em y não for parede.
+// isso permite "deslizar" ao longo da parede em vez de travar totalmente
+// quando o movimento é diagonal.
+static void	try_move(t_game *game, double dx, double dy)
+{
+	if (!is_wall(game, game->player.x + dx, game->player.y))
+		game->player.x += dx;
+	if (!is_wall(game, game->player.x, game->player.y + dy))
+		game->player.y += dy;
+}
+
 // move o player com as teclas WASD
 // W/S andam para frente/tras na direcao que o jogador olha (dir_x, dir_y)
-// A/D andam para os lados usando o vetor perpendicular à direcao (ta na função de baixo)
-// AINDA NÃO TEM checagem de colisao com parede — isso e da parte lá de verificações
+// A/D andam para os lados usando o vetor perpendicular à direcao
 void	move_player(t_game *game)
 {
 	if (game->keys.w)
-	{
-		game->player.x += game->player.dir_x * MOVE_SPEED;
-		game->player.y += game->player.dir_y * MOVE_SPEED;
-	}
+		try_move(game, game->player.dir_x * MOVE_SPEED,
+			game->player.dir_y * MOVE_SPEED);
 	if (game->keys.s)
-	{
-		game->player.x -= game->player.dir_x * MOVE_SPEED;
-		game->player.y -= game->player.dir_y * MOVE_SPEED;
-	}
+		try_move(game, -game->player.dir_x * MOVE_SPEED,
+			-game->player.dir_y * MOVE_SPEED);
 	if (game->keys.a)
-	{
-		game->player.x += game->player.dir_y * MOVE_SPEED;
-		game->player.y -= game->player.dir_x * MOVE_SPEED;
-	}
+		try_move(game, game->player.dir_y * MOVE_SPEED,
+			-game->player.dir_x * MOVE_SPEED);
 	if (game->keys.d)
-	{
-		game->player.x -= game->player.dir_y * MOVE_SPEED;
-		game->player.y += game->player.dir_x * MOVE_SPEED;
-	}
+		try_move(game, -game->player.dir_y * MOVE_SPEED,
+			game->player.dir_x * MOVE_SPEED);
 }
 
 // gira o vetor de direcao e o plano da camera por "angle" radianos,
