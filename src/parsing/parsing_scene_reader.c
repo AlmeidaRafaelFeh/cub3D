@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_scene_reader.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 15:14:09 by rafreire          #+#    #+#             */
 /*   Updated: 2026/08/02 15:15:42 by rafreire         ###   ########.fr       */
+=======
+/*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/02 15:14:09 by rafreire          #+#    #+#             */
+/*   Updated: 2026/08/03 19:12:45 by tmfanfa          ###   ########.fr       */
+>>>>>>> tai-merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +58,9 @@ int	collect_scene_data(int fd, t_scene *scene)
 		free(line);
 		line = get_next_line(fd);
 	}
+<<<<<<< HEAD
 	return (header_complete(scene) && map_started && scene->row_count > 0);
+=======
+	return (!(header_complete(scene) && map_started && scene->row_count > 0));
+>>>>>>> tai-merge
 }

@@ -6,18 +6,30 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 11:22:04 by rafreire          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/08/02 13:08:00 by rafreire         ###   ########.fr       */
+=======
+/*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
+>>>>>>> tai-merge
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+<<<<<<< HEAD
 int	set_player_position(t_game *game, int x, int y)
+=======
+int	set_player_position(t_game *game, int x, int y, char orientation)
+>>>>>>> tai-merge
 {
 	if (game->player.moves == 1)
 		return (1);
 	game->player.x = x;
 	game->player.y = y;
+<<<<<<< HEAD
+=======
+	game->player.orientation = orientation;
+>>>>>>> tai-merge
 	game->player.moves = 1;
 	return (0);
 }

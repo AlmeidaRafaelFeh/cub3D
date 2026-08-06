@@ -6,7 +6,11 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 11:21:23 by rafreire          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/08/02 15:22:38 by rafreire         ###   ########.fr       */
+=======
+/*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
+>>>>>>> tai-merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +26,11 @@ static int	starting_copy(char **rows, int row, int col, t_game *game)
 	game->map[row][col] = current;
 	if (current == 'N' || current == 'S' || current == 'E' || current == 'W')
 	{
+<<<<<<< HEAD
 		if (set_player_position(game, col, row))
+=======
+		if (set_player_position(game, col, row, current))
+>>>>>>> tai-merge
 			return (1);
 		game->map[row][col] = '0';
 	}

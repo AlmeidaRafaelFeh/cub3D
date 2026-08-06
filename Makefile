@@ -3,17 +3,20 @@ INC_DIR = includes
 OBJ_DIR = obj
 SRC_DIR = src
 LIBFT_DIR = libft
-MINILIBX_DIR = minilibx-linux
+MINILIBX_DIR = mlx_linux
 TEST_DIR = tests
 
 CUB = \
 		cub3D.c \
 		parsing/main.c \
+<<<<<<< HEAD
 		render/main.c \
 		render/render_background.c \
 		render/render_frame.c \
 		render/render_minimap.c \
 		utils_minilibx/utils_mlx.c \
+=======
+>>>>>>> tai-merge
 		parsing/parsing_utils.c \
 		parsing/parsing_map.c \
 		parsing/parsing_map_utils.c \
@@ -23,6 +26,19 @@ CUB = \
 		parsing/parsing_scene_rows.c \
 		parsing/parsing_scene_reader.c \
 		parsing/parsing_scene_cleanup.c \
+<<<<<<< HEAD
+=======
+		player/init_player.c \
+		player/movement.c \
+		raycasting/raycasting.c \
+		render/render_main.c \
+		render/render_minimap.c \
+		render/render_frame.c \
+		render/render_background.c \
+		render/render_walls.c \
+		hooks/hooks.c \
+		utils_minilibx/utils_mlx.c
+>>>>>>> tai-merge
 
 SRCS = \
 		$(addprefix $(SRC_DIR)/, $(CUB))
@@ -53,7 +69,13 @@ CFLAGS = -Wall -Wextra -Werror $(DEBUG) \
          -I$(INC_DIR) \
          -I$(LIBFT_DIR)/includes \
          -I$(MINILIBX_DIR)
-MLX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
+MLX_FLAGS = -L$(MINILIBX_DIR) \
+			-lmlx \
+			-lXext \
+			-lX11 \
+			-lm \
+			-lz \
+			-lbsd
 
 all: $(NAME)
 
@@ -92,9 +114,14 @@ $(LIBFT):
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -f $(TEST_BIN)
+<<<<<<< HEAD
 	@rm -f $(TEST_PARSING_BIN)
 	@make -sC $(LIBFT_DIR) clean >/dev/null 2>&1
 	@make -sC $(MINILIBX_DIR) clean >/dev/null 2>&1
+=======
+	-@make -sC $(LIBFT_DIR) clean >/dev/null 2>&1 || true
+	-@make -sC $(MINILIBX_DIR) clean >/dev/null 2>&1 || true
+>>>>>>> tai-merge
 	@echo "✅ Clean: $(NAME)"
 
 clean-tests:
