@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:36:15 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 10:36:17 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 14:46:01 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ void	init_keys(t_keys *keys);
 void	set_hooks(t_game *game);
 int		key_press(int keycode, t_game *game);
 int		key_release(int keycode, t_game *game);
-void	update_player(t_game *game);
 void	move_player(t_game *game);
 void	rotate_player(t_game *game);
 void	free_map(t_game *game);

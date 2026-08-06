@@ -6,13 +6,13 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:34:53 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 10:35:04 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:50:34 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	set_direction(t_player *player)
+static void	direction_s_e(t_player *player)
 {
 	if (player->orientation == 'S')
 	{
@@ -28,14 +28,18 @@ static void	set_direction(t_player *player)
 		player->plane_x = 0.0;
 		player->plane_y = 0.66;
 	}
-	else if (player->orientation == 'W')
+}
+
+static void	direction_n_w(t_player *player)
+{
+	if (player->orientation == 'W')
 	{
 		player->dir_x = -1.0;
 		player->dir_y = 0.0;
 		player->plane_x = 0.0;
 		player->plane_y = -0.66;
 	}
-	else
+	else if (player->orientation == 'N')
 	{
 		player->dir_x = 0.0;
 		player->dir_y = -1.0;
@@ -44,9 +48,22 @@ static void	set_direction(t_player *player)
 	}
 }
 
+static void	set_direction(t_player *player)
+{
+	if (player->orientation == 'N' || player->orientation == 'W')
+	{
+		direction_n_w(player);
+	}
+	else if (player->orientation == 'S' || player->orientation == 'E')
+	{
+		direction_s_e(player);
+	}
+}
+
 void	init_player(t_player *player)
 {
 	player->x = player->x + 0.5;
 	player->y = player->y + 0.5;
+	printf("DEBUG INIT: '%c'\n", player->orientation);
 	set_direction(player);
 }

@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:35:14 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 10:47:11 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 14:46:28 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,4 @@ void	rotate_player(t_game *game)
 		rotate_by(&game->player, -ROT_SPEED);
 	if (game->keys.right)
 		rotate_by(&game->player, ROT_SPEED);
-}
-
-void	update_player(t_game *game)
-{
-	move_player(game);
-	rotate_player(game);
 }

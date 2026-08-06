@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 11:00:12 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 11:00:21 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:01:56 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ static int	create_screen(t_game *game)
 	return (0);
 }
 
-// game->map, game->map_w, game->map_h e a posição inicial do player
-// (game->player.x/y/orientation) já chegam prontos, preenchidos pelo
-// parsing_main() antes desta função ser chamada.
 static int	init_game(t_game *game)
 {
 	game->mlx = mlx_init();

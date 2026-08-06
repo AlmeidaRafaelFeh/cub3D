@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 10:01:29 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/08/06 11:16:39 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 14:45:46 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	render_frame(t_game *game)
 {
-	update_player(game);
+	move_player(game);
+	rotate_player(game);
 	render_background(game);
 	render_walls(game);
 	render_minimap(game);

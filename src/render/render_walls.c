@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 15:02:30 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/08/06 11:17:09 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:48:59 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	get_wall_color(t_ray ray)
 	if (ray.side == 1)
 	{
 		if (ray.dir_y > 0)
-			return (COLOR_NORTH);
-		return (COLOR_SOUTH);
+			return (COLOR_SOUTH);
+		return (COLOR_NORTH);
 	}
 	if (ray.dir_x > 0)
 		return (COLOR_WEST);
