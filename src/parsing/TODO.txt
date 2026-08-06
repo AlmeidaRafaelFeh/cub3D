@@ -1,5 +1,3 @@
-Então a ordem recomendada é:
+o que falta fazer :::
 
-completar a forma do mapa;
-validar se ele está cercado por 1;
-detectar vazamentos com flood fill ou checagem de vizinhos.
+suprimir stealreacheble se for da mlx e adicionar texturas
