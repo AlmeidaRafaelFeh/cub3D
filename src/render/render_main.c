@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 09:03:37 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
+/*   Created: 2026/08/06 11:00:12 by rafreire          #+#    #+#             */
+/*   Updated: 2026/08/06 11:00:21 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// cria imagem onde os pixels aparecem
-// depois disso, a imagem vai inteira pra a janela
 static int	create_screen(t_game *game)
 {
 	game->screen.img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);

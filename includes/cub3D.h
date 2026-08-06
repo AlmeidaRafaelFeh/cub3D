@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 08:58:37 by rafreire          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/02 15:12:29 by rafreire         ###   ########.fr       */
-=======
-/*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
->>>>>>> tai-merge
+/*   Created: 2026/08/06 10:36:15 by rafreire          #+#    #+#             */
+/*   Updated: 2026/08/06 10:36:17 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +19,13 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-<<<<<<< HEAD
-=======
 # include <math.h>
->>>>>>> tai-merge
 # include "libft.h"
 # include "get_next_line.h"
 
 # define SCREEN_W 1280
 # define SCREEN_H 720
 
-// códigos de tecla (X11 keysym, usados pela MLX no Linux) e de
-// evento de janela, usados nos hooks de teclado/fechar
 # define KEY_ESC	65307
 # define KEY_W		119
 # define KEY_A		97
@@ -57,18 +48,6 @@ typedef struct s_player
 	char	orientation;
 }	t_player;
 
-<<<<<<< HEAD
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
-
-typedef t_img	t_pixel_data;
-=======
 typedef struct s_img //image
 {
 	void	*img;
@@ -78,8 +57,6 @@ typedef struct s_img //image
 	int		endian;
 }	t_img;
 
-// t_keys: pra guardar quando pressiona a tecla ou solta ela
-// quando a gente atualiza o movimento frame a frame ele fica mais suave e não tão travado
 typedef struct s_keys
 {
 	int	w;
@@ -90,7 +67,7 @@ typedef struct s_keys
 	int	right;
 }	t_keys;
 
-typedef struct s_game // game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
@@ -110,9 +87,6 @@ typedef struct s_flood
 	int		height;
 }	t_flood;
 
-// aqui foi meio vibe coding, porque tem bastante ângulo e raio pra calcular
-// mas deixei também comentado as funções pra mais ou menos entender como cada
-// um foi calculado pra ajudar na visualização e movimento do player
 typedef struct s_ray
 {
 	double	dir_x;
@@ -128,56 +102,9 @@ typedef struct s_ray
 	int		side;
 	double	perp_dist;
 }	t_ray;
->>>>>>> tai-merge
-
-// t_scene: dados brutos lidos do arquivo .cub (texturas, cores, linhas
-// do mapa) antes de virarem o game->map final. Usado só durante o parsing.
-typedef struct s_scene
-{
-<<<<<<< HEAD
-	void		*mlx;
-	void		*win;
-	char		**map;
-	int			map_w;
-	int			map_h;
-	t_img		screen;
-	t_player	player;
-}	t_game;
-
-typedef struct s_flood
-{
-	char	**map;
-	int		width;
-	int		height;
-}	t_flood;
 
 typedef struct s_scene
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
-	char	*floor_color;
-	char	*ceiling_color;
-	char	**rows;
-	int		row_count;
-}	t_scene;
-
-int		render_main(void);
-int		render_frame(t_game *game);
-void	render_background(t_game *game);
-void	render_minimap(t_game *game);
-
-// parsing functions
-
-void	free_map(t_game *game);
-int		is_valid_char(char c);
-int		parsing_main(char *file_path);
-int		parse_map_from_rows(char **rows, int row_count, t_game *game);
-int		get_max_width(char **rows, int row_count);
-int		get_row_len(char *row);
-int		set_player_position(t_game *game, int x, int y);
-=======
 	char	*north_texture;
 	char	*south_texture;
 	char	*west_texture;
@@ -204,15 +131,12 @@ int		key_release(int keycode, t_game *game);
 void	update_player(t_game *game);
 void	move_player(t_game *game);
 void	rotate_player(t_game *game);
-
-// parsing functions (Rafael)
 void	free_map(t_game *game);
 int		is_valid_char(char c);
 int		parse_map_from_rows(char **rows, int row_count, t_game *game);
 int		get_max_width(char **rows, int row_count);
 int		get_row_len(char *row);
 int		set_player_position(t_game *game, int x, int y, char orientation);
->>>>>>> tai-merge
 int		count_players(char **rows, int row_count);
 int		is_blank_line(char *line);
 void	normalize_line(char *line);
@@ -226,10 +150,4 @@ int		collect_scene_data(int fd, t_scene *scene);
 void	free_scene_data(t_scene *scene);
 char	**alloc_map(int row_count, int max_width);
 
-<<<<<<< HEAD
-// utils mlx
-void	my_pixel_put(t_img *img, int x, int y, int color);
-
-=======
->>>>>>> tai-merge
 #endif

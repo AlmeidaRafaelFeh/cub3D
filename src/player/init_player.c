@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/29 10:00:21 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
+/*   Created: 2026/08/06 10:34:53 by rafreire          #+#    #+#             */
+/*   Updated: 2026/08/06 10:35:04 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// direção/plano da câmera para cada orientação lida do .cub
-// -> dir_x/dir_y  -> para onde o jogador olha
-// -> plane_x/plane_y -> plano da câmera, perpendicular à direção (define o FOV)
 static void	set_direction(t_player *player)
 {
 	if (player->orientation == 'S')
@@ -47,9 +44,6 @@ static void	set_direction(t_player *player)
 	}
 }
 
-// posição e direção iniciais do jogador.
-// x/y já vêm preenchidos pelo parsing (índice da coluna/linha do mapa
-// onde estava o N/S/E/W); aqui a gente só centraliza no meio do tile.
 void	init_player(t_player *player)
 {
 	player->x = player->x + 0.5;

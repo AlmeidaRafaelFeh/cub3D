@@ -6,11 +6,7 @@
 /*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 12:51:44 by rafreire          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/02 14:46:12 by rafreire         ###   ########.fr       */
-=======
 /*   Updated: 2026/08/03 by tmfanfa                 ###   ########.fr       */
->>>>>>> tai-merge
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +22,6 @@
 # include <unistd.h>
 # include "libft.h"
 
-<<<<<<< HEAD
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strchr(const char *str, int c);
-=======
->>>>>>> tai-merge
 char	*ft_read_append(int fd, char *content, char *buffer);
 char	*get_next_line(int fd);
 char	*validate_line(char **content);

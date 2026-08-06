@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmfanfa <tmfanfa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 11:27:42 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/08/04 11:31:17 by tmfanfa          ###   ########.fr       */
+/*   Updated: 2026/08/06 10:57:02 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// seta todas as teclas pra 0 (tipo sem estarem pressionadas) no inicio do jogo
 void	init_keys(t_keys *keys)
 {
 	keys->w = 0;
@@ -23,9 +22,6 @@ void	init_keys(t_keys *keys)
 	keys->right = 0;
 }
 
-// fecha a janela e encerra (libera a imagem e a janela antes de sair)
-// chamado tanto pelo ESC (key_press) quanto pelo clique no X da janela
-// (hook de DestroyNotify registrado em set_hooks)
 static int	close_game(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->screen.img);
@@ -33,10 +29,6 @@ static int	close_game(t_game *game)
 	exit(0);
 }
 
-// liga a flag quando uma tecla é pressionada
-// ESC fecha o jogo na hora
-// as outras teclas so ficam marcadas como ativas em game->keys e o movimento de acontece em
-// update_player() no arquivo movement.c, ele roda uma vez por frame
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
@@ -56,7 +48,6 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
-// desliga a flag da tecla pressionada
 int	key_release(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
@@ -74,10 +65,6 @@ int	key_release(int keycode, t_game *game)
 	return (0);
 }
 
-// Aqui os hooks de teclado + o de fechar pelo X:
-// - EVENT_KEY_PRESS   -> tecla pressionada
-// - EVENT_KEY_RELEASE -> quando solta a tecla
-// - 17 (DestroyNotify) -> clique no X da janela
 void	set_hooks(t_game *game)
 {
 	mlx_hook(game->win, EVENT_KEY_PRESS, 1L << 0, key_press, game);
