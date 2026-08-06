@@ -63,6 +63,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+valgrind: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
+		--suppressions=mlx.supp ./$(NAME) $(ARGS)
+
 $(MINILIBX):
 	@make -sC $(MINILIBX_DIR) DEBUG="$(DEBUG)" >/dev/null 2>&1
 
@@ -87,4 +91,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all test norm clean fclean re
+.PHONY: all test norm clean fclean re valgrind clean-tests

@@ -1,0 +1,14 @@
+{
+   mlx_xopendisplay_writev_uninit
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   obj:*libxcb*
+   obj:*libxcb*
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+}
