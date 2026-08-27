@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:36:15 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/27 16:54:35 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:28:02 by tmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_player
 	char	orientation;
 }	t_player;
 
-typedef struct s_img //image
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -123,6 +123,16 @@ typedef struct s_ray
 	double	perp_dist;
 }	t_ray;
 
+typedef struct s_col_draw
+{
+	t_texture	*tex;
+	int			tex_x;
+	int			start;
+	int			end;
+	double		step;
+	double		tex_pos;
+}	t_col_draw;
+
 typedef struct s_scene
 {
 	char	*north_texture;
@@ -142,6 +152,8 @@ int		render_main(t_game *game);
 int		render_frame(t_game *game);
 void	render_background(t_game *game);
 void	render_walls(t_game *game);
+void	init_col_draw(t_game *game, t_ray ray, t_col_draw *col);
+void	paint_wall_column(t_game *game, int x, t_col_draw *col);
 void	render_minimap(t_game *game);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	init_player(t_player *player);

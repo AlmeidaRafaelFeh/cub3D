@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 11:00:12 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/27 17:04:32 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:17:21 by tmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	create_screen(t_game *game)
 	game->screen.img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
 	if (!game->screen.img)
 		return (1);
-	game->screen.addr = mlx_get_data_addr(game->screen.img, &game->screen.bpp,
+	game->screen.addr = mlx_get_data_addr(game->screen.img, &game->screen.bpp, \
 			&game->screen.line_len, &game->screen.endian);
 	return (0);
 }

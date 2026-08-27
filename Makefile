@@ -24,6 +24,7 @@ CUB = \
 		render/render_minimap.c \
 		render/render_frame.c \
 		render/render_background.c \
+		render/render_wall_column.c \
 		render/render_walls.c \
 		hooks/hooks.c \
 		utils_minilibx/utils_mlx.c
