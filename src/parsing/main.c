@@ -12,12 +12,28 @@
 
 #include "cub3D.h"
 
+static int	check_file_extension(char *path)
+{
+	int	len;
+
+	if (!path)
+		return (1);
+	len = ft_strlen(path);
+	if (len < 4)
+		return (1);
+	if (ft_strncmp(path + len - 4, ".cub", 4) != 0)
+		return (1);
+	if (len > 4 && path[len - 5] == '/')
+		return (1);
+	return (0);
+}
+
 int	parsing_main(char *file_path, t_game *game)
 {
 	t_scene	scene;
 	int		fd;
 
-	if (!file_path || !game)
+	if (!file_path || !game || check_file_extension(file_path))
 		return (1);
 	ft_memset(&scene, 0, sizeof(scene));
 	fd = open(file_path, O_RDONLY);
@@ -35,6 +51,8 @@ int	parsing_main(char *file_path, t_game *game)
 	game->south_texture = scene.south_texture;
 	game->west_texture = scene.west_texture;
 	game->east_texture = scene.east_texture;
+	game->floor_color = scene.floor_color;
+	game->ceiling_color = scene.ceiling_color;
 	scene.north_texture = NULL;
 	scene.south_texture = NULL;
 	scene.west_texture = NULL;

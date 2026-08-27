@@ -12,22 +12,20 @@
 
 #include "cub3D.h"
 
-static int	process_line(t_scene *scene, char *line, int *map_started)
+static int	handle_non_blank_line(t_scene *scene, char *line,
+				int *map_started, int map_ended)
 {
-	if (is_blank_line(line))
-	{
-		if (!*map_started && header_complete(scene))
-			return (0);
-		return (1);
-	}
-	if (!*map_started)
+	if (!header_complete(scene))
 	{
 		if (!is_header_line(line) || store_header_line(scene, line))
 			return (1);
 		return (0);
 	}
+	if (map_ended)
+		return (1);
 	if (!is_map_line(line) || append_row(scene, line))
 		return (1);
+	*map_started = 1;
 	return (0);
 }
 
@@ -35,15 +33,20 @@ int	collect_scene_data(int fd, t_scene *scene)
 {
 	char	*line;
 	int		map_started;
+	int		map_ended;
 
 	map_started = 0;
+	map_ended = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
 		normalize_line(line);
-		if (!map_started && is_blank_line(line) && header_complete(scene))
-			map_started = 1;
-		else if (process_line(scene, line, &map_started))
+		if (is_blank_line(line))
+		{
+			if (map_started)
+				map_ended = 1;
+		}
+		else if (handle_non_blank_line(scene, line, &map_started, map_ended))
 		{
 			free(line);
 			return (1);

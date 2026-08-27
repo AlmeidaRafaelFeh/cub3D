@@ -12,6 +12,35 @@
 
 #include "cub3D.h"
 
+int	validate_map_closed(t_game *game)
+{
+	int	r;
+	int	c;
+
+	r = 0;
+	while (r < game->map_h)
+	{
+		c = 0;
+		while (c < game->map_w)
+		{
+			if (game->map[r][c] == '0')
+			{
+				if (r == 0 || r == game->map_h - 1
+					|| c == 0 || c == game->map_w - 1)
+					return (1);
+				if (game->map[r - 1][c] == ' '
+					|| game->map[r + 1][c] == ' '
+					|| game->map[r][c - 1] == ' '
+					|| game->map[r][c + 1] == ' ')
+					return (1);
+			}
+			c++;
+		}
+		r++;
+	}
+	return (0);
+}
+
 static int	starting_copy(char **rows, int row, int col, t_game *game)
 {
 	char	current;
@@ -39,9 +68,9 @@ static int	copy_row(char **rows, int row, int max_width, t_game *game)
 	while (col < max_width)
 	{
 		if (!rows[row] || col >= len)
-			game->map[row][col] = '0';
+			game->map[row][col] = ' ';
 		else if (rows[row][col] == ' ' || rows[row][col] == '\t')
-			game->map[row][col] = '0';
+			game->map[row][col] = ' ';
 		else
 		{
 			if (starting_copy(rows, row, col, game))
@@ -86,6 +115,8 @@ int	parse_map_from_rows(char **rows, int row_count, t_game *game)
 		return (free_map(game), 1);
 	player_count = count_players(rows, row_count);
 	if (player_count != 1 || game->player.moves != 1)
+		return (free_map(game), 1);
+	if (validate_map_closed(game))
 		return (free_map(game), 1);
 	return (0);
 }
