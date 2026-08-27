@@ -23,7 +23,7 @@ static void	draw_ceiling(t_game *game)
 		x = 0;
 		while (x < SCREEN_W)
 		{
-			my_pixel_put(&game->screen, x, y, 0x87CEEB);
+			my_pixel_put(&game->screen, x, y, game->ceiling_color);
 			x++;
 		}
 		y++;
@@ -41,7 +41,7 @@ static void	draw_floor(t_game *game)
 		x = 0;
 		while (x < SCREEN_W)
 		{
-			my_pixel_put(&game->screen, x, y, 0x555555);
+			my_pixel_put(&game->screen, x, y, game->floor_color);
 			x++;
 		}
 		y++;

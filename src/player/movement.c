@@ -26,7 +26,7 @@ static int	is_wall(t_game *game, double x, double y)
 		return (1);
 	if (!game->map[row] || col >= (int)ft_strlen(game->map[row]))
 		return (1);
-	return (game->map[row][col] == '1');
+	return (game->map[row][col] != '0');
 }
 
 static void	try_move(t_game *game, double dx, double dy)

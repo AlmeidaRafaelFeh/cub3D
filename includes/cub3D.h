@@ -92,6 +92,8 @@ typedef struct s_game
 	char		*south_texture;
 	char		*west_texture;
 	char		*east_texture;
+	int			floor_color;
+	int			ceiling_color;
 	t_texture	north;
 	t_texture	south;
 	t_texture	west;
@@ -127,8 +129,10 @@ typedef struct s_scene
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
-	char	*floor_color;
-	char	*ceiling_color;
+	int		floor_color;
+	int		ceiling_color;
+	int		floor_set;
+	int		ceiling_set;
 	char	**rows;
 	int		row_count;
 }	t_scene;
@@ -151,6 +155,7 @@ void	rotate_player(t_game *game);
 void	free_map(t_game *game);
 int		is_valid_char(char c);
 int		parse_map_from_rows(char **rows, int row_count, t_game *game);
+int		validate_map_closed(t_game *game);
 int		get_max_width(char **rows, int row_count);
 int		get_row_len(char *row);
 int		set_player_position(t_game *game, int x, int y, char orientation);
@@ -166,5 +171,6 @@ int		append_row(t_scene *scene, char *line);
 int		collect_scene_data(int fd, t_scene *scene);
 void	free_scene_data(t_scene *scene);
 char	**alloc_map(int row_count, int max_width);
+int		parse_rgb(char *str, int *color_out);
 
 #endif

@@ -26,8 +26,6 @@ void	free_scene_data(t_scene *scene)
 	free_scene_field(&scene->south_texture);
 	free_scene_field(&scene->west_texture);
 	free_scene_field(&scene->east_texture);
-	free_scene_field(&scene->floor_color);
-	free_scene_field(&scene->ceiling_color);
 	row = 0;
 	while (scene->rows && row < scene->row_count)
 	{
