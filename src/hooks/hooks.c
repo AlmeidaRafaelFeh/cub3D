@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 11:27:42 by tmfanfa           #+#    #+#             */
-/*   Updated: 2026/08/06 10:57:02 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:05:47 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,26 @@ void	init_keys(t_keys *keys)
 
 static int	close_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->screen.img);
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->north.img)
+		mlx_destroy_image(game->mlx, game->north.img);
+	if (game->south.img)
+		mlx_destroy_image(game->mlx, game->south.img);
+	if (game->west.img)
+		mlx_destroy_image(game->mlx, game->west.img);
+	if (game->east.img)
+		mlx_destroy_image(game->mlx, game->east.img);
+	if (game->screen.img)
+		mlx_destroy_image(game->mlx, game->screen.img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	free_map(game);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	exit(0);
+	return (0);
 }
 
 int	key_press(int keycode, t_game *game)

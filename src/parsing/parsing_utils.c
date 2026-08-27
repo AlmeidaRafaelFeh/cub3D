@@ -6,16 +6,31 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 14:03:35 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 10:17:18 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 16:43:17 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+static void	free_texture_path(char **path)
+{
+	if (*path)
+	{
+		free(*path);
+		*path = NULL;
+	}
+}
+
 void	free_map(t_game *game)
 {
 	int	i;
 
+	if (!game)
+		return ;
+	free_texture_path(&game->north_texture);
+	free_texture_path(&game->south_texture);
+	free_texture_path(&game->west_texture);
+	free_texture_path(&game->east_texture);
 	if (!game->map)
 		return ;
 	i = 0;

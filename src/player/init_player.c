@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:34:53 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 15:50:34 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 15:41:12 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void	init_player(t_player *player)
 {
 	player->x = player->x + 0.5;
 	player->y = player->y + 0.5;
-	printf("DEBUG INIT: '%c'\n", player->orientation);
 	set_direction(player);
 }

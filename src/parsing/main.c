@@ -31,6 +31,14 @@ int	parsing_main(char *file_path, t_game *game)
 		return (1);
 	}
 	close(fd);
+	game->north_texture = scene.north_texture;
+	game->south_texture = scene.south_texture;
+	game->west_texture = scene.west_texture;
+	game->east_texture = scene.east_texture;
+	scene.north_texture = NULL;
+	scene.south_texture = NULL;
+	scene.west_texture = NULL;
+	scene.east_texture = NULL;
 	free_scene_data(&scene);
 	return (0);
 }
