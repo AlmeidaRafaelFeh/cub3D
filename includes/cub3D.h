@@ -6,7 +6,7 @@
 /*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:36:15 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/06 14:46:01 by rafreire         ###   ########.fr       */
+/*   Updated: 2026/08/27 16:54:35 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ typedef struct s_keys
 	int	right;
 }	t_keys;
 
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -77,7 +88,14 @@ typedef struct s_game
 	int			map_h;
 	t_player	player;
 	t_keys		keys;
-
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	t_texture	north;
+	t_texture	south;
+	t_texture	west;
+	t_texture	east;
 }	t_game;
 
 typedef struct s_flood

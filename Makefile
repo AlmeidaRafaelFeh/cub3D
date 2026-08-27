@@ -20,7 +20,7 @@ CUB = \
 		player/init_player.c \
 		player/movement.c \
 		raycasting/raycasting.c \
-		render/render_main.c \
+		render/main.c \
 		render/render_minimap.c \
 		render/render_frame.c \
 		render/render_background.c \
