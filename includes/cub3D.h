@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:36:15 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/27 19:28:02 by tmorais-         ###   ########.fr       */
+/*   Updated: 2026/09/01 14:26:15 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <math.h>
 # include "libft.h"
 # include "get_next_line.h"
+# include "errno.h"
 
 # define SCREEN_W 1280
 # define SCREEN_H 720

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmorais- <tmorais-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafreire <rafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 10:56:27 by rafreire          #+#    #+#             */
-/*   Updated: 2026/08/27 19:20:17 by tmorais-         ###   ########.fr       */
+/*   Updated: 2026/09/01 14:28:34 by rafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	assign_textures(t_scene *scene, t_game *game)
 	game->south_texture = scene->south_texture;
 	game->west_texture = scene->west_texture;
 	game->east_texture = scene->east_texture;
+	game->floor_color = scene->floor_color;
+	game->ceiling_color = scene->ceiling_color;
 	scene->north_texture = NULL;
 	scene->south_texture = NULL;
 	scene->west_texture = NULL;
@@ -40,6 +42,7 @@ int	parsing_main(char *file_path, t_game *game)
 	{
 		close(fd);
 		free_scene_data(&scene);
+		printf("Error: Invalid .cub file\n");
 		return (1);
 	}
 	close(fd);
